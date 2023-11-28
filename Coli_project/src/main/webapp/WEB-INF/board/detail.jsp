@@ -123,10 +123,7 @@
                                         <span class="date">${comment.created_at}</span>
                                     </div>
                                     <span class="button">
-                                        <a href="#none" onclick="">
-                                            <img src="//img.echosting.cafe24.com/skin/base_ko_KR/board/btn_ico_modify.gif" alt="수정">
-                                        </a>
-                                        <a href="#none" onclick="">
+                                        <a href="#none" onclick="deleteComment(${comment.cmt_id})">
                                             <img src="//img.echosting.cafe24.com/skin/base_ko_KR/board/btn_ico_delete.gif" alt="삭제">
                                         </a>
                                     </span>
@@ -187,6 +184,26 @@
            }
        });
    }
+   function deleteComment(cmt_id) {
+	    $.ajax({
+	        type: 'POST',
+	        url: '${cpath}/board/commentRemove',
+	        data: { cmt_id: cmt_id },
+	        success: function (response) {
+	            // 성공적으로 댓글이 삭제되었을 때 실행할 코드를 여기에 추가합니다.
+	            console.log('댓글 삭제 성공:', response);
+	            // 페이지를 새로고침하거나, 댓글을 화면에서 갱신하는 등의 작업을 수행할 수 있습니다.
+	            // 예시: 페이지 새로고침
+	            
+	        },
+	        error: function (error) {
+	            // 댓글 삭제에 실패했을 때 실행할 코드를 여기에 추가합니다.
+	            console.error('댓글 삭제 오류:', error.responseText);
+	            // 오류 처리를 위한 메시지를 표시하거나 다른 조치를 취할 수 있습니다.
+	            location.reload();
+	        }
+	    });
+	}
    </script> 	
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>

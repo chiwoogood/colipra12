@@ -192,11 +192,11 @@
 	}
 	</script>
 	<script>
-    function uploadFiles(atc_id) {
+    function uploadFiles(articleId) {
         // articleId가 유효한지 확인
         if (articleId && !isNaN(articleId)) {
             var formData = new FormData();
-            formData.append('atc_id', atc_id);
+            formData.append('atc_id', articleId);
 
             // 첨부 파일들을 formData에 추가
             var files = $("input[name='attach_file[]']");

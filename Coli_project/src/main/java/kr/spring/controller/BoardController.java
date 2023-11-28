@@ -53,7 +53,8 @@ public class BoardController {
    
    @Autowired 
    private CommentService commentService;
-    
+   
+   
    @PostMapping("/upload")
    @ResponseBody
    public ResponseEntity<String> uploadFiles(
@@ -188,6 +189,10 @@ public class BoardController {
        return "board/detail/" + atc_id;
    }
    
-
+   @PostMapping("commentRemove")
+   public void commentRemove(@RequestParam("cmt_id")long cmt_id) {
+	   commentService.delete(cmt_id);
+	   
+   }
    
 }

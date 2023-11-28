@@ -48,4 +48,10 @@ public class CommentServiceImpl implements CommentService {
     public List<Comment> getCommentsByArticleId(long atc_id) {
         return commentRepository.findByArticleId(atc_id);
     }
+    
+    @Override
+    public void delete(Long cmt_id) {
+    	commentRepository.deleteById(cmt_id);
+    }
+    
 }
